@@ -1,4 +1,4 @@
-const cookieSession = require('cookie-session');
+const session = require('express-session');
 const express = require('express');
 const app = express();
 const passportSetup = require('./passport');
@@ -7,7 +7,11 @@ const authRoute = require('./routes/auth');
 const cors = require('cors');
 
 app.use(
-  cookieSession({ name: 'session', keys: ['lama'], maxAge: 24 * 60 * 60 * 100 })
+  session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false,
+  })
 );
 
 app.use(passport.initialize());
