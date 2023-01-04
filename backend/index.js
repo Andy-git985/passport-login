@@ -24,6 +24,7 @@ app.use(
   })
 );
 
+app.use(express.static('build'));
 app.use('/auth', authRoute);
 
 app.listen('5000', () => {
