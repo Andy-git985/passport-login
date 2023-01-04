@@ -27,6 +27,6 @@ app.use(
 app.use(express.static('build'));
 app.use('/auth', authRoute);
 
-app.listen('5000', () => {
+app.listen('8080', () => {
   console.log('Server is running');
 });

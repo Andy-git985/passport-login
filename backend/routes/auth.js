@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const passport = require('passport');
+const config = require('./config');
 
-const CLIENT_URL = 'http://localhost:3000/';
+const CLIENT_URL = config.CLIENT_URL;
 
 router.get('/login/success', (request, response) => {
   if (request.user) {
@@ -37,7 +38,7 @@ router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
 router.get(
   '/google/callback',
   passport.authenticate('google', {
-    successRedirect: 'http://localhost:3000',
+    successRedirect: CLIENT_URL,
     failureRedirect: '/login/failed',
   })
 );
@@ -47,7 +48,7 @@ router.get('/github', passport.authenticate('github', { scope: ['profile'] }));
 router.get(
   '/github/callback',
   passport.authenticate('github', {
-    successRedirect: 'http://localhost:3000',
+    successRedirect: CLIENT_URL,
     failureRedirect: '/login/failed',
   })
 );
@@ -60,7 +61,7 @@ router.get(
 router.get(
   '/facebook/callback',
   passport.authenticate('facebook', {
-    successRedirect: 'https://localhost:3000',
+    successRedirect: CLIENT_URL,
     failureRedirect: '/login/failed',
   })
 );
