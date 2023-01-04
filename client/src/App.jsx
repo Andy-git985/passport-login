@@ -11,7 +11,8 @@ const App = () => {
 
   useEffect(() => {
     const getUser = () => {
-      fetch('http://localhost:5000/auth/login/success', {
+      fetch('https://silent-cloud-5562.fly.dev//auth/login/success', {
+        // fetch('http://localhost:5000/auth/login/success', {
         method: 'GET',
         credentials: 'include',
         headers: {
