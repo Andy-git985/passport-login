@@ -22,8 +22,14 @@ router.get('/login/failed', (request, response) => {
 });
 
 router.get('/logout', (request, response) => {
-  request.logout();
-  response.redirect(CLIENT_URL);
+  request.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    response.redirect(CLIENT_URL);
+  });
+  // request.logout();
+  // response.redirect(CLIENT_URL);
 });
 
 router.get('/google', passport.authenticate('google', { scope: ['profile'] }));
